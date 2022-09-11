@@ -1,7 +1,10 @@
 import NewMeetupForm from "../../components/meetups/NewMeetupForm";
 import { useRouter } from "next/router";
+import { Fragment } from "react";
+import Head from "next/head";
 
 function newMeetup() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
 
   async function addMeetupHandler(enteredMeetupData) {
@@ -17,6 +20,17 @@ function newMeetup() {
     router.push("/");
   }
 
-  return <NewMeetupForm onAddMeetup={addMeetupHandler} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Add A New Meetups</title>
+        <meta
+          name="description"
+          content="Add your own meetups and create amazing opportunities!"
+        />
+      </Head>
+      <NewMeetupForm onAddMeetup={addMeetupHandler} />;
+    </Fragment>
+  );
 }
 export default newMeetup;
